@@ -30,6 +30,12 @@ chown_elasticsearch:
       - user
       - group
 
+config_elasticsearch:
+  file.managed:
+    - name: /opt/elasticsearch-1.2.1/config/elasticsearch.yml
+    - source: salt://elasticsearch/files/elasticsearch.yml
+    - mode: 644
+
 upstart_elasticsearch:
   file.managed:
     - name: /etc/init/elasticsearch.conf
