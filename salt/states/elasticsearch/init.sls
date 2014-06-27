@@ -23,22 +23,18 @@ user_elasticsearch:
 
 chown_elasticsearch:
   file.directory:
-    - name: /opt/elasticsearch
+    - name: /opt/elasticsearch-1.2.1
     - user: elasticsearch
     - group: elasticsearch
     - recurse:
       - user
       - group
 
-init_elasticsearch:
+upstart_elasticsearch:
   file.managed:
-    - name: /etc/init.d/elasticsearch
-    - source: salt://elasticsearch/files/elasticsearch
-    - mode: 755
-
-chkconfig_elasticsearch:
-  cmd.run:
-    - name: chkconfig elasticsearch on
+    - name: /etc/init/elasticsearch.conf
+    - source: salt://elasticsearch/files/elasticsearch.upstart.conf
+    - mode: 644
 
 service_elasticsearch:
   service:

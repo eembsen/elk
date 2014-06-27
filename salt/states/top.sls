@@ -13,3 +13,7 @@ base:
     - xldeploy.server
     - jenkins
     # - stash
+
+  'elastic1.localdomain':
+    - java.openjdk.7
+    - elasticsearch
