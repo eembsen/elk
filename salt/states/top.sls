@@ -17,6 +17,11 @@ base:
   'elastic1.localdomain':
     - java.openjdk.7
     - elasticsearch
+    - logstash
+
+  'elastic2.localdomain':
+    - java.openjdk.7
+    - elasticsearch
 
   'kibana.localdomain':
     - kibana
