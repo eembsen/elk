@@ -1,4 +1,4 @@
-kibana_nginx_version: 1.0.15
+kibana_nginx_version: 1.0.15-5.el6
 kibana_version: 3.1.0
 source_hash: md5=e8e8d4611e223e455bd7c304dbfdb579
 install_dir: /opt/

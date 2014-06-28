@@ -2,6 +2,7 @@ nginx_kibana:
   pkg.installed:
     - name: nginx
     - version: {{ pillar['kibana_nginx_version'] }}
+    - skip_verify: True
 
 untar_kibana:
   archive.extracted:
@@ -27,7 +28,7 @@ user_kibana:
     - gid_from_name: True
 
 symlink_kibana:
-  file.managed:
+  file.symlink:
     - name: /usr/share/nginx/html/kibana
     - target: /opt/kibana-{{ pillar['kibana_version'] }}
     - force: True
@@ -48,14 +49,6 @@ config_kibana:
     - mode: 644
     - template: jinja
 
-#upstart_nginx:
-#  file.managed:
-#    - name: /etc/init/kibana.conf
-#    - source: salt://kibana/files/elasticsearch.upstart.conf
-#    - mode: 644
-#    - template: jinja
-#
-#service_kibana:
-#  service:
-#    - name: kibana
-#    - running
+service_nginx:
+  service.running:
+    - name: nginx
